@@ -1,0 +1,17 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://code.alibabatech.com/schema/dubbo
+		http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+    <!-- 给当前Provider自定义个名字 -->
+    <dubbo:application name="dubbo-service"/>
+    <!-- 配置注册中心  -->
+    <dubbo:registry address="127.0.0.1:2181" protocol="zookeeper"></dubbo:registry>
+    <!-- 配置端口 -->
+    <dubbo:protocol name="dubbo" port="20888"></dubbo:protocol>
+    <!-- 注册功能 -->
+    <dubbo:service interface="com.weien.service.PrintService" ref="demoServiceImpl"></dubbo:service>
+    <bean id="demoServiceImpl" class="com.weien.service.impl.PrintServiceImpl"></bean>
+</beans>
