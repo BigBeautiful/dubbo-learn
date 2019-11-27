@@ -13,15 +13,15 @@ import java.util.concurrent.Executors;
 
 @RestController
 @RequestMapping("/cdl")
-public class PrintServiceController {
+public class CountDownLatchController {
 
-    Logger logger = LoggerFactory.getLogger(PrintServiceController.class);
+    Logger logger = LoggerFactory.getLogger(CountDownLatchController.class);
 
     @Resource
     PrintService service;
 
     @RequestMapping(value = "/print", produces = "text/html;charset=UTF-8")
-    public String printTask(String name) {
+    public String printTask() {
 
         final CountDownLatch other = new CountDownLatch(3);
 
